@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[Users]
+(
+    [UserID] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Name] NVARCHAR(30) NOT NULL, 
+    [Lastname] NVARCHAR(30) NOT NULL, 
+    [Email] NVARCHAR(50) NOT NULL, 
+    [Phone] NVARCHAR(50) NOT NULL, 
+    [Password] NVARCHAR(30) NOT NULL, 
+    [Wallet] DECIMAL(10, 2) NOT NULL, 
+    [AccountImage] IMAGE NULL
+)
+
+CREATE TABLE [dbo].[Games]
+(
+    [GameId] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Title] NVARCHAR(50) NOT NULL, 
+    [Developer] NVARCHAR(50) NOT NULL, 
+    [Publisher] NVARCHAR(50) NOT NULL, 
+    [Description] NVARCHAR(200) NOT NULL, 
+    [Price] DECIMAL(6, 2) NOT NULL, 
+    [ReleaseData] DATETIME NOT NULL
+)
+
+CREATE TABLE [dbo].[Sales]
+(
+	[UserID] INT NOt NULL,
+	[GameID] INT NOT NULL,
+	[SellDate] datetime NOT NULL,
+	CONSTRAINT fk_user_sale FOREIGN KEY (UserID) REFERENCES Users (UserID),
+	CONSTRAINT fk_game_sale FOREIGN KEY (GameID) REFERENCES Games (GameID),
+	CONSTRAINT pk_sale PRIMARY KEY (UserID, GameID)
+)
+
