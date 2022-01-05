@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shared.Models;
+using Shared.Interfaces;
 
 namespace DataLayer
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
 
         // Method for inserting User into database

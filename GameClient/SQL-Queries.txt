@@ -21,13 +21,13 @@ CREATE TABLE [dbo].[Games]
     [ReleaseData] DATETIME NOT NULL
 )
 
-CREATE TABLE [dbo].[Sales]
-(
-	[UserID] INT NOt NULL,
-	[GameID] INT NOT NULL,
-	[SellDate] datetime NOT NULL,
-	CONSTRAINT fk_user_sale FOREIGN KEY (UserID) REFERENCES Users (UserID),
-	CONSTRAINT fk_game_sale FOREIGN KEY (GameID) REFERENCES Games (GameID),
-	CONSTRAINT pk_sale PRIMARY KEY (UserID, GameID)
-)
 
+CREATE TABLE [dbo].[Sales] 
+(
+    [UserID]   INT      NOT NULL,
+    [GameID]   INT      NOT NULL,
+    [SellDate] DATETIME NOT NULL,
+    [SalesID] INT PRIMARY KEY IDENTITY(1,1), 
+    CONSTRAINT [fk_user_sale] FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID]),
+    CONSTRAINT [fk_game_sale] FOREIGN KEY ([GameID]) REFERENCES [dbo].[Games] ([GameId])
+)
