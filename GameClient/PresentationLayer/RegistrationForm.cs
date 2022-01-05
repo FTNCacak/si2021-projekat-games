@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Shared.Models;
 using Shared.Interfaces;
-
+using System.Threading;
 
 namespace PresentationLayer
 {
@@ -177,6 +177,9 @@ namespace PresentationLayer
             MessageBox.Show("Successful registration. Now you can login to your account.");
 
 
+            Thread thread = new Thread(() => OpenNewForm(userBusiness));
+            thread.Start();
+            this.Dispose();
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -218,12 +221,17 @@ namespace PresentationLayer
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           
 
-            LoginForm loginForm = new LoginForm();
 
-            loginForm.Show();
+            Thread thread = new Thread(() => OpenNewForm(userBusiness));
+            thread.Start();
+            this.Dispose();
 
+        }
+
+        private void OpenNewForm(IUserBusiness userBusiness)
+        {
+            Application.Run(new LoginForm(userBusiness));
         }
     }
 }

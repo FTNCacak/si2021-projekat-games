@@ -27,7 +27,7 @@ namespace PresentationLayer
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
-                var registrationForm = serviceProvider.GetRequiredService<RegistrationForm>();
+                var registrationForm = serviceProvider.GetRequiredService<LoginForm>();
                 Application.Run(registrationForm);
 
             }
@@ -41,7 +41,7 @@ namespace PresentationLayer
             services.AddScoped<IUserBusiness, UserBusiness>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddScoped<RegistrationForm>();
+            services.AddScoped<LoginForm>();
         }
     }
 }

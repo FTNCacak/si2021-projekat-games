@@ -571,6 +571,7 @@ namespace PresentationLayer
             this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBoxName.Location = new System.Drawing.Point(100, 204);
+            this.textBoxName.MaxLength = 30;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(194, 25);
             this.textBoxName.TabIndex = 1;

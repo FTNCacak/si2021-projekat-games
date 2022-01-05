@@ -56,8 +56,9 @@ namespace PresentationLayer
             this.buttonErrorName = new System.Windows.Forms.Button();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
             this.buttonLinkToRegister = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.PanelHeader.SuspendLayout();
             this.PanelMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -74,6 +75,7 @@ namespace PresentationLayer
             this.checkBoxShowPassword.TabStop = false;
             this.checkBoxShowPassword.Text = "Show password";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
             // 
             // label1
             // 
@@ -101,10 +103,14 @@ namespace PresentationLayer
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPassword.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBoxPassword.Location = new System.Drawing.Point(194, 186);
+            this.textBoxPassword.Location = new System.Drawing.Point(194, 184);
+            this.textBoxPassword.MaxLength = 30;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(391, 25);
             this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            this.textBoxPassword.MouseEnter += new System.EventHandler(this.textBox_MouseEnter);
             // 
             // buttonErrorLastname
             // 
@@ -135,11 +141,13 @@ namespace PresentationLayer
             this.buttonCancel.Text = "CANCEL";
             this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonLogin
             // 
             this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(62)))), ((int)(((byte)(69)))));
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLogin.Enabled = false;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -150,6 +158,8 @@ namespace PresentationLayer
             this.buttonLogin.Text = "LOGIN";
             this.buttonLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.buttonLogin.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // panel2
             // 
@@ -175,10 +185,12 @@ namespace PresentationLayer
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxEmail.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBoxEmail.Location = new System.Drawing.Point(194, 121);
+            this.textBoxEmail.Location = new System.Drawing.Point(194, 119);
+            this.textBoxEmail.MaxLength = 50;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(391, 25);
             this.textBoxEmail.TabIndex = 1;
+            this.textBoxEmail.MouseEnter += new System.EventHandler(this.textBox_MouseEnter);
             // 
             // PanelHeader
             // 
@@ -191,15 +203,6 @@ namespace PresentationLayer
             this.PanelHeader.Size = new System.Drawing.Size(668, 70);
             this.PanelHeader.TabIndex = 0;
             this.PanelHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
-
-            this.LabelClose.Click += new System.EventHandler(this.LabelClose_Click);
-            this.LabelClose.MouseEnter += new System.EventHandler(this.LabelClose_MouseHover);
-            this.LabelClose.MouseLeave += new System.EventHandler(this.LabelClose_MouseLeave);
-
-            this.LabelMinimize.Click += new System.EventHandler(this.LabelMinimize_Click);
-            this.LabelMinimize.MouseEnter += new System.EventHandler(this.LabelMinimize_MouseHover);
-            this.LabelMinimize.MouseLeave += new System.EventHandler(this.LabelMinimize_MouseLeave);
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // LabelClose
             // 
@@ -211,6 +214,9 @@ namespace PresentationLayer
             this.LabelClose.Size = new System.Drawing.Size(37, 38);
             this.LabelClose.TabIndex = 2;
             this.LabelClose.Text = "×";
+            this.LabelClose.Click += new System.EventHandler(this.LabelClose_Click);
+            this.LabelClose.MouseEnter += new System.EventHandler(this.LabelClose_MouseHover);
+            this.LabelClose.MouseLeave += new System.EventHandler(this.LabelClose_MouseLeave);
             // 
             // LabelMinimize
             // 
@@ -222,6 +228,9 @@ namespace PresentationLayer
             this.LabelMinimize.Size = new System.Drawing.Size(30, 41);
             this.LabelMinimize.TabIndex = 1;
             this.LabelMinimize.Text = "_";
+            this.LabelMinimize.Click += new System.EventHandler(this.LabelMinimize_Click);
+            this.LabelMinimize.MouseEnter += new System.EventHandler(this.LabelMinimize_MouseHover);
+            this.LabelMinimize.MouseLeave += new System.EventHandler(this.LabelMinimize_MouseLeave);
             // 
             // buttonErrorName
             // 
@@ -252,6 +261,7 @@ namespace PresentationLayer
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(46)))), ((int)(((byte)(49)))));
+            this.panel1.Controls.Add(this.labelError);
             this.panel1.Controls.Add(this.buttonLinkToRegister);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.checkBoxShowPassword);
@@ -270,6 +280,34 @@ namespace PresentationLayer
             this.panel1.Size = new System.Drawing.Size(672, 478);
             this.panel1.TabIndex = 0;
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(182, 76);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(254, 25);
+            this.labelError.TabIndex = 50;
+            this.labelError.Text = "Incorrect email or password.";
+            this.labelError.Visible = false;
+            // 
+            // buttonLinkToRegister
+            // 
+            this.buttonLinkToRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(62)))), ((int)(((byte)(69)))));
+            this.buttonLinkToRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLinkToRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLinkToRegister.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLinkToRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonLinkToRegister.Location = new System.Drawing.Point(267, 396);
+            this.buttonLinkToRegister.Name = "buttonLinkToRegister";
+            this.buttonLinkToRegister.Size = new System.Drawing.Size(329, 40);
+            this.buttonLinkToRegister.TabIndex = 49;
+            this.buttonLinkToRegister.Text = "CREATE A NEW ACCOUNT...";
+            this.buttonLinkToRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonLinkToRegister.UseVisualStyleBackColor = false;
+            this.buttonLinkToRegister.Click += new System.EventHandler(this.buttonLinkToRegister_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -280,21 +318,6 @@ namespace PresentationLayer
             this.label3.TabIndex = 48;
             this.label3.Text = "Don\'t have a account?";
             // 
-            // buttonLinkToRegister
-            // 
-            this.buttonLinkToRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(62)))), ((int)(((byte)(69)))));
-            this.buttonLinkToRegister.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonLinkToRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLinkToRegister.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLinkToRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLinkToRegister.Location = new System.Drawing.Point(252, 396);
-            this.buttonLinkToRegister.Name = "buttonLinkToRegister";
-            this.buttonLinkToRegister.Size = new System.Drawing.Size(344, 40);
-            this.buttonLinkToRegister.TabIndex = 49;
-            this.buttonLinkToRegister.Text = "CREATE A NEW ACCOUNT...";
-            this.buttonLinkToRegister.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLinkToRegister.UseVisualStyleBackColor = false;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -303,6 +326,7 @@ namespace PresentationLayer
             this.Controls.Add(this.PanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.PanelHeader.ResumeLayout(false);
             this.PanelHeader.PerformLayout();
@@ -333,5 +357,6 @@ namespace PresentationLayer
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonLinkToRegister;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelError;
     }
 }

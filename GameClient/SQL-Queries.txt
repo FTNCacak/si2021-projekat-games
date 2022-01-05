@@ -4,10 +4,9 @@ CREATE TABLE [dbo].[Users]
     [Name] NVARCHAR(30) NOT NULL, 
     [Lastname] NVARCHAR(30) NOT NULL, 
     [Email] NVARCHAR(50) NOT NULL, 
-    [Phone] NVARCHAR(50) NOT NULL, 
+    [Phone] NVARCHAR(15) NOT NULL, 
     [Password] NVARCHAR(30) NOT NULL, 
     [Wallet] DECIMAL(10, 2) NOT NULL, 
-    [AccountImage] IMAGE NULL
 )
 
 CREATE TABLE [dbo].[Games]
@@ -18,7 +17,8 @@ CREATE TABLE [dbo].[Games]
     [Publisher] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(200) NOT NULL, 
     [Price] DECIMAL(6, 2) NOT NULL, 
-    [ReleaseData] DATETIME NOT NULL
+    [ReleaseData] DATETIME NOT NULL,
+    [GameImage] IMAGE NULL NOT NULL
 )
 
 
