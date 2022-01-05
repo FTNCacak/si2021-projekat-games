@@ -43,9 +43,6 @@ namespace PresentationLayer
         {
             this.PanelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelEmailExists = new System.Windows.Forms.Label();
-            this.labelQuestionMark = new System.Windows.Forms.Label();
-            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
             this.labelErrorFormat = new System.Windows.Forms.Label();
             this.labelFormatLastaname = new System.Windows.Forms.Label();
             this.labelFormatName = new System.Windows.Forms.Label();
@@ -88,6 +85,9 @@ namespace PresentationLayer
             this.LabelMinimize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonErrorName = new System.Windows.Forms.Button();
+            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
+            this.labelQuestionMark = new System.Windows.Forms.Label();
+            this.labelEmailExists = new System.Windows.Forms.Label();
             this.PanelMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PanelHeader.SuspendLayout();
@@ -153,47 +153,6 @@ namespace PresentationLayer
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(657, 598);
             this.panel1.TabIndex = 0;
-            // 
-            // labelEmailExists
-            // 
-            this.labelEmailExists.AutoSize = true;
-            this.labelEmailExists.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmailExists.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.labelEmailExists.Location = new System.Drawing.Point(89, 133);
-            this.labelEmailExists.Margin = new System.Windows.Forms.Padding(0);
-            this.labelEmailExists.Name = "labelEmailExists";
-            this.labelEmailExists.Size = new System.Drawing.Size(354, 28);
-            this.labelEmailExists.TabIndex = 55;
-            this.labelEmailExists.Text = "Account already exists. Do you want to ";
-            this.labelEmailExists.Visible = false;
-            // 
-            // labelQuestionMark
-            // 
-            this.labelQuestionMark.BackColor = System.Drawing.Color.Transparent;
-            this.labelQuestionMark.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuestionMark.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.labelQuestionMark.Location = new System.Drawing.Point(412, 133);
-            this.labelQuestionMark.Margin = new System.Windows.Forms.Padding(0);
-            this.labelQuestionMark.Name = "labelQuestionMark";
-            this.labelQuestionMark.Size = new System.Drawing.Size(17, 28);
-            this.labelQuestionMark.TabIndex = 57;
-            this.labelQuestionMark.Text = "?";
-            // 
-            // linkLabelLogin
-            // 
-            this.linkLabelLogin.ActiveLinkColor = System.Drawing.SystemColors.AppWorkspace;
-            this.linkLabelLogin.AutoSize = true;
-            this.linkLabelLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelLogin.LinkColor = System.Drawing.Color.White;
-            this.linkLabelLogin.Location = new System.Drawing.Point(364, 133);
-            this.linkLabelLogin.Margin = new System.Windows.Forms.Padding(0);
-            this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(64, 28);
-            this.linkLabelLogin.TabIndex = 56;
-            this.linkLabelLogin.TabStop = true;
-            this.linkLabelLogin.Text = "Login";
-            this.linkLabelLogin.Visible = false;
-            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
             // 
             // labelErrorFormat
             // 
@@ -543,11 +502,11 @@ namespace PresentationLayer
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(62)))), ((int)(((byte)(69)))));
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonCancel.Location = new System.Drawing.Point(337, 515);
+            this.buttonCancel.Location = new System.Drawing.Point(335, 515);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(211, 52);
+            this.buttonCancel.Size = new System.Drawing.Size(214, 40);
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "CANCEL";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -557,11 +516,11 @@ namespace PresentationLayer
             // 
             this.buttonRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(62)))), ((int)(((byte)(69)))));
             this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegister.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegister.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonRegister.Location = new System.Drawing.Point(89, 515);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(211, 52);
+            this.buttonRegister.Size = new System.Drawing.Size(216, 40);
             this.buttonRegister.TabIndex = 7;
             this.buttonRegister.Text = "REGISTER";
             this.buttonRegister.UseVisualStyleBackColor = false;
@@ -691,6 +650,47 @@ namespace PresentationLayer
             this.buttonErrorName.TabIndex = 26;
             this.buttonErrorName.TabStop = false;
             this.buttonErrorName.UseVisualStyleBackColor = false;
+            // 
+            // linkLabelLogin
+            // 
+            this.linkLabelLogin.ActiveLinkColor = System.Drawing.SystemColors.AppWorkspace;
+            this.linkLabelLogin.AutoSize = true;
+            this.linkLabelLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelLogin.LinkColor = System.Drawing.Color.White;
+            this.linkLabelLogin.Location = new System.Drawing.Point(364, 133);
+            this.linkLabelLogin.Margin = new System.Windows.Forms.Padding(0);
+            this.linkLabelLogin.Name = "linkLabelLogin";
+            this.linkLabelLogin.Size = new System.Drawing.Size(64, 28);
+            this.linkLabelLogin.TabIndex = 56;
+            this.linkLabelLogin.TabStop = true;
+            this.linkLabelLogin.Text = "Login";
+            this.linkLabelLogin.Visible = false;
+            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
+            // 
+            // labelQuestionMark
+            // 
+            this.labelQuestionMark.BackColor = System.Drawing.Color.Transparent;
+            this.labelQuestionMark.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuestionMark.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.labelQuestionMark.Location = new System.Drawing.Point(412, 133);
+            this.labelQuestionMark.Margin = new System.Windows.Forms.Padding(0);
+            this.labelQuestionMark.Name = "labelQuestionMark";
+            this.labelQuestionMark.Size = new System.Drawing.Size(17, 28);
+            this.labelQuestionMark.TabIndex = 57;
+            this.labelQuestionMark.Text = "?";
+            // 
+            // labelEmailExists
+            // 
+            this.labelEmailExists.AutoSize = true;
+            this.labelEmailExists.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmailExists.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.labelEmailExists.Location = new System.Drawing.Point(89, 133);
+            this.labelEmailExists.Margin = new System.Windows.Forms.Padding(0);
+            this.labelEmailExists.Name = "labelEmailExists";
+            this.labelEmailExists.Size = new System.Drawing.Size(354, 28);
+            this.labelEmailExists.TabIndex = 55;
+            this.labelEmailExists.Text = "Account already exists. Do you want to ";
+            this.labelEmailExists.Visible = false;
             // 
             // RegistrationForm
             // 

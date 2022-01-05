@@ -218,6 +218,11 @@ namespace PresentationLayer
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
+
+            LoginForm loginForm = new LoginForm();
+
+            loginForm.Show();
 
         }
     }
