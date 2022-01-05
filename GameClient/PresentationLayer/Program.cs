@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Shared.Interfaces;
+using BusinessLayer;
+using DataLayer;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PresentationLayer
 {
@@ -16,7 +20,28 @@ namespace PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrationForm());
+
+
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                var registrationForm = serviceProvider.GetRequiredService<RegistrationForm>();
+                Application.Run(registrationForm);
+
+            }
+
+          
+
+        }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddScoped<IUserBusiness, UserBusiness>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<RegistrationForm>();
         }
     }
 }

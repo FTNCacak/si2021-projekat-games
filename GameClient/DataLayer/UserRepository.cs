@@ -23,7 +23,7 @@ namespace DataLayer
                 using (SqlCommand sqlCommand = new SqlCommand())
                 {
                     sqlCommand.Connection = sqlConnection;
-                    sqlCommand.CommandText = "INSERT INTO Users(@Name, @Lastname, @Email, @Phone, @Password, @Wallet)";
+                    sqlCommand.CommandText = "INSERT INTO Users VALUES(@Name, @Lastname, @Email, @Phone, @Password, @Wallet)";
 
                     sqlCommand.Parameters.AddWithValue("@Name", user.Name);
                     sqlCommand.Parameters.AddWithValue("@Lastname", user.Lastname);
