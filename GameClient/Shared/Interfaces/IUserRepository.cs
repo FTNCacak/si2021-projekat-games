@@ -11,5 +11,11 @@ namespace Shared.Interfaces
         void InsertUser(User user);
         List<string> GetAllEmails();
         string GetUserPasswordByEmail(string email);
+        User GetUserData(string email);
+
+        void UpdateUserPassword(int UserID, string newPassword);
+
+        void UpdateUserWallet(int UserID, decimal wallet);
+
     }
 }
