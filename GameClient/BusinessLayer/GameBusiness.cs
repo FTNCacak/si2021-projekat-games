@@ -22,12 +22,12 @@ namespace BusinessLayer
 
         public List<Sale> GetAllUserSales(int UserID)
         {
-            throw new NotImplementedException();
+            return gameRepository.GetAllUserSales(UserID);
         }
 
         public void InsertIntoSales(int UserID, int GameID, DateTime sellDate)
         {
-            throw new NotImplementedException();
+            gameRepository.InsertIntoSales(UserID, GameID, sellDate);
         }
     }
 }
