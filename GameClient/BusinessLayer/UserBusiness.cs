@@ -27,6 +27,12 @@ namespace BusinessLayer
             userRepository.InsertUser(user);
         }
 
+        // Method for getting user data from database
+        public User GetUserData(string email)
+        {
+            return userRepository.GetUserData(email);
+        }
+
 
         // Method for checking existence of user in database
         public bool IsUserAlreadyExists(string email)
@@ -89,6 +95,16 @@ namespace BusinessLayer
             return pattern.Match(phone).Success;
         }
 
+        // Method for changing user password
+        public void UpdateUserPassword(int UserID, string newPassword)
+        {
+            userRepository.UpdateUserPassword(UserID, newPassword);
+        }
 
+        // Method for adding funs into wallet
+        public void UpdateUserWallet(int UserID, decimal wallet)
+        {
+            userRepository.UpdateUserWallet(UserID, wallet);
+        }
     }
 }

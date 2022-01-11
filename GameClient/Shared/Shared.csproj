@@ -56,8 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IGameBusiness.cs" />
+    <Compile Include="Interfaces\IGameRepository.cs" />
     <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,5 +16,9 @@ namespace Shared.Interfaces
         bool EmailFormatValidation(string email);
         bool NameAndLastNameFormatValidation(string input);
         bool PhoneFormatValidation(string phone);
+        User GetUserData(string email);
+        void UpdateUserPassword(int UserID, string newPassword);
+        void UpdateUserWallet(int UserID, decimal wallet);
+
     }
 }
