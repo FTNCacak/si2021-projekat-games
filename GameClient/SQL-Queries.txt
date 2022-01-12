@@ -1,0 +1,44 @@
+CREATE TABLE [dbo].[Users]
+(
+    [UserID] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Name] NVARCHAR(30) NOT NULL, 
+    [Lastname] NVARCHAR(30) NOT NULL, 
+    [Email] NVARCHAR(50) NOT NULL, 
+    [Phone] NVARCHAR(15) NOT NULL, 
+    [Password] NVARCHAR(30) NOT NULL, 
+    [Wallet] DECIMAL(10, 2) NOT NULL, 
+)
+
+CREATE TABLE [dbo].[Games]
+(
+    [GameId] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Title] NVARCHAR(50) NOT NULL, 
+    [Developer] NVARCHAR(50) NOT NULL, 
+    [Publisher] NVARCHAR(50) NOT NULL, 
+    [Description] NVARCHAR(200) NOT NULL, 
+    [Price] DECIMAL(6, 2) NOT NULL, 
+    [ReleaseData] DATETIME NOT NULL,
+    [GameImage] IMAGE NULL NOT NULL
+)
+
+
+CREATE TABLE [dbo].[Sales] 
+(
+    [UserID]   INT      NOT NULL,
+    [GameID]   INT      NOT NULL,
+    [SellDate] DATETIME NOT NULL,
+    [SalesID] INT PRIMARY KEY IDENTITY(1,1), 
+    CONSTRAINT [fk_user_sale] FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID]),
+    CONSTRAINT [fk_game_sale] FOREIGN KEY ([GameID]) REFERENCES [dbo].[Games] ([GameId])
+)
+
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Dota 2', 'Valve', 'Valve', 'Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if its their 10th hour of play or 1,000th, theres always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has taken on a life of its own.', 0, '2013-7-9', 0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Counter-Strike: Global Offensive', 'Valve, Hidden Path Entertainment', 'Valve', 'Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.).', 0, '2012-8-21',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Apex Legends', 'Respawn Entertainment', 'Electronic Arts', 'Apex Legends is the award-winning, free-to-play Hero shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.', 0, '2020-11-5', 0xFFD8FFE000104A46494600010101004700470000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414 );
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Rust', 'Facepunch Studios', 'Facepunch Studios', 'The only aim in Rust is to survive. Everything wants you to die - the island’s wildlife and other inhabitants, the environment, other survivors. Do whatever it takes to last another night.', 40, '2018-2-8',  0xFFD8FFE000104A46494600010101004800480000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Age of Empires IV', 'Relic Entertainment, Worlds Edge', 'Xbox Game Studios', 'One of the most beloved real-time strategy games returns to glory with Age of Empires IV, putting you at the center of epic historical battles that shaped the world.', 60, '2021-10-28',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Cyberpunk 2077', 'CD PROJEKT RED', 'CD PROJEKT RED', 'yberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.', 60, '2020-12-10',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Red Dead Redemption 2', 'Rockstar Games', 'Rockstar Games', 'Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, RDR2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America at the dawn of the modern age. Also includes access to the shared living world of Red Dead Online.', 50, '2019-12-5',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('God of War', 'Santa Monica Studio', 'PlayStation PC LLC', 'His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.', 50, '2022-1-14',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Fifa 22', 'EA Canada & EA Romania', 'Electronic Arts', 'Play FIFA 22, Get a Next Generation Player Item: receive an untradeable Next Generation Player Item in FIFA Ultimate Team starting December 15 when you play FIFA 22 by January 14, 2022.', 60, '2021-10-1',  0xFFD8FFE000104A46494600010101000000000000FFDB0043000302020302020303030304030304050805050404050A070706080C0A0C0C0B0A0B0B0D0E12100D0E110E0B0B1016101113141515150C0F171816141812141514FFDB00430103040405040509050509140D0B0D1414141414141414141414141414141414141414);
+INSERT INTO Games(Title, Developer, Publisher, Description, Price, ReleaseData, GameImage) VALUES('Terraria', 'Re-Logic', 'Re-Logic', 'Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!', 10, '2011-5-16',  0xFFD8FFE000104A46494600010101004700470000FFE20C584943435F50524F46494C4500010100000C484C696E6F021000006D6E74725247422058595A2007CE00020009000600310000616373704D5346540000000049454320735247420000000000000000000000010000F6D6000100000000D32D48502020000000000000);
