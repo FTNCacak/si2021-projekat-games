@@ -40,8 +40,12 @@ namespace PresentationLayer
         {
             services.AddScoped<IUserBusiness, UserBusiness>();
             services.AddScoped<IUserRepository, UserRepository>();
-
+            services.AddScoped<IGameBusiness, GameBusiness>();
+            services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<LoginForm>();
+        
+
         }
+
     }
 }

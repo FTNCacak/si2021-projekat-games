@@ -16,9 +16,11 @@ namespace PresentationLayer
     public partial class RegistrationForm : Form
     {
         private readonly IUserBusiness userBusiness;
-        public RegistrationForm(IUserBusiness _userBusiness)
+        private readonly IGameBusiness gameBusiness;
+        public RegistrationForm(IUserBusiness _userBusiness, IGameBusiness _gameBusiness)
         {
             this.userBusiness = _userBusiness;
+            this.gameBusiness = _gameBusiness;
             InitializeComponent();
         }
 
@@ -177,7 +179,7 @@ namespace PresentationLayer
             MessageBox.Show("Successful registration. Now you can login to your account.");
 
 
-            Thread thread = new Thread(() => OpenNewForm(userBusiness));
+            Thread thread = new Thread(() => OpenNewForm(userBusiness, gameBusiness));
             thread.Start();
             this.Dispose();
         }
@@ -223,15 +225,16 @@ namespace PresentationLayer
         {
 
 
-            Thread thread = new Thread(() => OpenNewForm(userBusiness));
+            Thread thread = new Thread(() => OpenNewForm(userBusiness, gameBusiness));
             thread.Start();
             this.Dispose();
 
         }
 
-        private void OpenNewForm(IUserBusiness userBusiness)
+        private void OpenNewForm(IUserBusiness userBusiness, IGameBusiness gameBusiness)
         {
-            Application.Run(new LoginForm(userBusiness));
+            Application.Run(new LoginForm(userBusiness, gameBusiness));
         }
     }
 }
+

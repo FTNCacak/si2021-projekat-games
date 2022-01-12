@@ -17,9 +17,11 @@ namespace PresentationLayer
     {
 
         private readonly IUserBusiness userBusiness;
-        public LoginForm(IUserBusiness _userBusiness)
+        private readonly IGameBusiness gameBusiness;
+        public LoginForm(IUserBusiness _userBusiness, IGameBusiness _gameBusiness)
         {
             this.userBusiness = _userBusiness;
+            this.gameBusiness = _gameBusiness;
             InitializeComponent();
         }
 
@@ -70,14 +72,44 @@ namespace PresentationLayer
 
         private void buttonLinkToRegister_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() => OpenNewForm(userBusiness));
+            Thread thread = new Thread(() => OpenNewForm(userBusiness, gameBusiness));
             thread.Start();
             this.Dispose();
         }
 
-        private void OpenNewForm(IUserBusiness userBusiness)
+        private void OpenNewForm(IUserBusiness userBusiness, IGameBusiness gameBusiness)
         {
-            Application.Run(new RegistrationForm(userBusiness));
+            Application.Run(new RegistrationForm(userBusiness, gameBusiness));
+        }
+
+        private void OpenNewGameClientForm(IUserBusiness userBusiness, IGameBusiness gameBusiness, User user, List<Game> storeGames, List<Sale> sales)
+        {
+            Application.Run(new GameClientForm(userBusiness, gameBusiness, user, storeGames, sales));
+        }
+
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            string email = textBoxEmail.Text.Trim();
+            string password = textBoxPassword.Text.Trim();
+
+            if (!userBusiness.LoginValidation(email, password))
+            {
+                labelError.Visible = true;
+                return;
+            }
+            else
+            {
+                User user = userBusiness.GetUserData(email);
+                List<Game> storeGames = gameBusiness.GetAllGames();
+                List<Sale> sales = gameBusiness.GetAllUserSales(user.UserID);
+                Thread thread = new Thread(() => OpenNewGameClientForm(userBusiness, gameBusiness, user, storeGames, sales));
+                thread.Start();
+                this.Dispose();
+            }
+
+
+
         }
 
         private void checkBoxShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -93,24 +125,7 @@ namespace PresentationLayer
             }
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            string email = textBoxEmail.Text.Trim();
-            string password = textBoxPassword.Text.Trim();
 
-            if (!userBusiness.LoginValidation(email, password))
-            {
-                labelError.Visible = true;
-                return;
-            }
-            else {
-
-                MessageBox.Show("Yeah");
-            }
-           
-
-
-        }
 
         private void textBox_MouseEnter(object sender, EventArgs e)
         {
@@ -130,3 +145,4 @@ namespace PresentationLayer
         }
     }
 }
+
